@@ -1,13 +1,13 @@
 import Link from "next/link"
-import { FileText } from "lucide-react"
+import { FileText, Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background/95 backdrop-blur-sm">
-      <div className="container px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+    <footer id="contact" className="border-t bg-background/95 backdrop-blur-sm">
+      <div className="container px-4 md:px-6 py-12 mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
-          <div className="col-span-1 md:col-span-1 space-y-4">
+          <div className="space-y-4">
             <Link 
               href="/" 
               className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
@@ -15,16 +15,16 @@ export function Footer() {
               <FileText className="h-6 w-6 text-primary" />
               <span className="font-bold text-xl tracking-tight">Docment</span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              AI-powered contract automation for the modern world.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              AI-powered contract automation for the modern world. Create, verify, and execute legally binding contracts within minutes.
             </p>
           </div>
 
-          {/* Navigation Columns */}
+          {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-base">Product</h3>
-            <ul className="space-y-3">
-              {['Features', 'Pricing', 'About'].map((item) => (
+            <h3 className="font-semibold text-base">Quick Links</h3>
+            <ul className="space-y-2">
+              {['Features', 'Pricing', 'About', 'Blog', 'Contact'].map((item) => (
                 <li key={item}>
                   <Link 
                     href={`#${item.toLowerCase()}`}
@@ -37,47 +37,103 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Contact Information */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-base">Company</h3>
+            <h3 className="font-semibold text-base">Contact Us</h3>
             <ul className="space-y-3">
-              {['Blog', 'Careers', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li className="flex items-start space-x-3">
+                <Mail className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                <span className="text-sm text-muted-foreground">
+                  <a href="mailto:betadocment.ai@gmail.com" className="hover:text-foreground transition-colors">
+                    betadocment.ai@gmail.com
+                  </a>
+                </span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <Phone className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                <span className="text-sm text-muted-foreground">
+                  <a href="tel:+917766037844" className="hover:text-foreground transition-colors">
+                    +91 77660 37844
+                  </a>
+                </span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <Phone className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                <span className="text-sm text-muted-foreground">
+                  <a href="tel:+918959888088" className="hover:text-foreground transition-colors">
+                    +91 89598 88088
+                  </a>
+                </span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+                <span className="text-sm text-muted-foreground">
+                G-05, Design Innovation Centre, University of Delhi, New Delhi, IN -110007
+                </span>
+              </li>
             </ul>
           </div>
 
+          {/* Founders */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-base">Legal</h3>
-            <ul className="space-y-3">
-              {['Privacy Policy', 'Terms of Service'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href="#"
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h3 className="font-semibold text-base">Meet Our Founders</h3>
+            <div className="space-y-4">
+              {/* Founder 1 */}
+              <div className="space-y-2">
+                <p className="text-sm font-medium">Aniket</p>
+                <div className="flex space-x-2">
+                  <a href="https://www.linkedin.com/in/-aniket-singh-/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a href="mailto:its.aniketsingh04@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Mail className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.instagram.com/anikket.singh/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Instagram className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+              
+              {/* Founder 2 */}
+              <div className="space-y-2">
+                <p className="text-sm font-medium">Vishal</p>
+                <div className="flex space-x-2">
+                  <a href="https://www.linkedin.com/in/venccord/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a href="mailto:vishalnasingh@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Mail className="h-4 w-4" />
+                  </a>
+                  {/* <a href="mailto:vishalnasingh@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Mail className="h-4 w-4" />
+                  </a> */}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-muted">
-          <p className="text-center text-sm text-muted-foreground">
+        {/* Legal Links */}
+        <div className="mt-10 pt-6 border-t border-muted flex flex-col sm:flex-row justify-between items-center">
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Docment. All rights reserved.
           </p>
+          {/* <div className="flex space-x-6 mt-4 sm:mt-0">
+            <Link 
+              href="/privacy"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              href="/terms"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Terms of Service
+            </Link>
+          </div> */}
         </div>
       </div>
     </footer>
   )
 }
-

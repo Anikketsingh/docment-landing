@@ -1,69 +1,69 @@
-"use server"
+'use server'
 
-import { z } from "zod"
-import { supabase } from "@/lib/supabase"
-import { waitlistSchema } from "@/lib/schema"
-import { revalidatePath } from "next/cache"
+import clientPromise from "@/lib/mongodb"
 
-export async function joinWaitlist(formData: FormData) {
+export async function joinWaitlist(prevState: any, formData: FormData) {
   try {
-    // Extract form data
-    const rawData = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      referral_code: formData.get("referralCode"),
-      interests: formData.getAll("interests"),
+    console.log('1. Server action started')
+    
+    // Extract form data (works with both direct FormData submission and our object approach)
+    const name = formData.get('name')?.toString()?.trim()
+    const email = formData.get('email')?.toString()?.trim()?.toLowerCase()
+    const referralCode = formData.get('referralCode')?.toString()?.trim() || null
+    const interests = formData.getAll('interests').map(String)
+    
+    console.log('2. Extracted form data:', { name, email, referralCode, interests })
+    
+    // Validate required fields
+    if (!name || !email) {
+      console.log('3A. Required fields missing')
+      return { success: false, error: "Name and email are required" }
     }
 
-    // Validate the data
-    const validatedData = waitlistSchema.parse(rawData)
+    console.log('3. Connecting to MongoDB...')
+    const client = await clientPromise
+    
+    const db = client.db("legalchatbot") // <-- REPLACE WITH YOUR ACTUAL DB NAME
+    console.log('4. Using database:', db.databaseName)
 
-    // Check for existing email
-    const { data: existingUser, error: checkError } = await supabase
-      .from("waitlist")
-      .select("id")
-      .eq("email", validatedData.email)
-      .maybeSingle()
-
-    if (checkError) {
-      console.error("Error checking existing user:", checkError)
-      return { error: "Failed to check existing user. Please try again." }
+    // Create the document
+    const waitlistEntry = {
+      name,
+      email,
+      referralCode,
+      interests,
+      createdAt: new Date()
     }
+    console.log('5. Document to insert:', waitlistEntry)
 
+    // Check for duplicate email
+    console.log('6. Checking for duplicates...')
+    const existingUser = await db.collection("waitlist").findOne({ email })
+    
     if (existingUser) {
-      return { error: "This email is already on the waitlist" }
-    }
-
-    // Generate unique referral code
-    const referralCode = `DOCMENT${Math.random().toString(36).substring(2, 8).toUpperCase()}`
-
-    // Insert new waitlist entry
-    const { error: insertError } = await supabase.from("waitlist").insert([
-      {
-        name: validatedData.name,
-        email: validatedData.email,
-        referral_code: referralCode,
-        interests: validatedData.interests,
-        status: "pending",
-      },
-    ])
-
-    if (insertError) {
-      console.error("Error inserting waitlist entry:", insertError)
-      if (insertError.code === "23505") {
-        return { error: "This email is already on the waitlist" }
+      console.log('7A. Duplicate email found:', email)
+      return { 
+        success: false, 
+        error: "This email is already registered. We'll notify you when we launch!" 
       }
-      return { error: "Failed to join waitlist. Please try again." }
     }
 
-    revalidatePath("/waitlist")
-    return { success: true, referralCode }
-  } catch (error) {
-    console.error("Waitlist error:", error)
-    if (error instanceof z.ZodError) {
-      return { error: error.errors[0].message }
+    // Insert document
+    console.log('7. Inserting document...')
+    const result = await db.collection("waitlist").insertOne(waitlistEntry)
+    
+    if (!result.acknowledged) {
+      console.log('8A. Insert failed')
+      throw new Error("Failed to insert data")
     }
-    return { error: "Something went wrong. Please try again." }
+
+    console.log('8. Document inserted successfully with ID:', result.insertedId)
+    return { success: true }
+  } catch (error) {
+    console.error('SERVER ERROR:', error)
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : "Failed to join waitlist" 
+    }
   }
 }
-
