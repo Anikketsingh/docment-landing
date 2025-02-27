@@ -1,18 +1,20 @@
 import Link from "next/link"
-import { FileText, Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react"
+import Image from 'next/image'
+import logo from '@/public/logo.png'
 
 export function Footer() {
   return (
     <footer id="contact" className="border-t bg-background/95 backdrop-blur-sm">
       <div className="container px-4 md:px-6 py-12 mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
           {/* Brand Column */}
           <div className="space-y-4">
             <Link 
               href="/" 
-              className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
+              className="flex items-center space-x-1 hover:opacity-90 transition-opacity"
             >
-              <FileText className="h-6 w-6 text-primary" />
+              <Image src={logo} alt="Docment Logo" className="relative h-10 w-10" />
               <span className="font-bold text-xl tracking-tight">Docment</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -78,23 +80,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-base">Meet Our Founders</h3>
             <div className="space-y-4">
-              {/* Founder 1 */}
-              <div className="space-y-2">
-                <p className="text-sm font-medium">Aniket</p>
-                <div className="flex space-x-2">
-                  <a href="https://www.linkedin.com/in/-aniket-singh-/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                  <a href="mailto:its.aniketsingh04@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Mail className="h-4 w-4" />
-                  </a>
-                  <a href="https://www.instagram.com/anikket.singh/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-              
-              {/* Founder 2 */}
+              {/* Founder 1 (Vishal) */}
               <div className="space-y-2">
                 <p className="text-sm font-medium">Vishal</p>
                 <div className="flex space-x-2">
@@ -104,9 +90,19 @@ export function Footer() {
                   <a href="mailto:vishalnasingh@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
                     <Mail className="h-4 w-4" />
                   </a>
-                  {/* <a href="mailto:vishalnasingh@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                </div>
+              </div>
+              
+              {/* Founder 2 (Aniket) */}
+              <div className="space-y-2">
+                <p className="text-sm font-medium">Aniket</p>
+                <div className="flex space-x-2">
+                  <a href="https://www.linkedin.com/in/-aniket-singh-/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a href="mailto:its.aniketsingh04@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
                     <Mail className="h-4 w-4" />
-                  </a> */}
+                  </a>
                 </div>
               </div>
             </div>
@@ -118,20 +114,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Docment. All rights reserved.
           </p>
-          {/* <div className="flex space-x-6 mt-4 sm:mt-0">
-            <Link 
-              href="/privacy"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              href="/terms"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms of Service
-            </Link>
-          </div> */}
         </div>
       </div>
     </footer>

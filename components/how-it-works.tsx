@@ -104,17 +104,14 @@ export function HowItWorks() {
           </div>
           
           {/* Mobile step numbers */}
-          <div className="md:hidden space-y-12 mt-8">
-            {steps.map((step, index) => (
-              <div key={`mobile-${index}`} className="flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                  {index + 1}
+          <div className="md:hidden mt-8">
+            {/* <div className="flex flex-col items-center space-y-4"> */}
+              {/* {steps.map((step, index) => (
+                <div key={`mobile-${index}`} className="flex flex-col items-center">
+                 
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="h-12 w-px bg-primary/20 my-2"></div>
-                )}
-              </div>
-            ))}
+              ))} */}
+            {/* </div> */}
           </div>
         </div>
       </div>
