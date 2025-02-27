@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CustomCursor } from "@/components/custom-cursor"
 import { Toaster } from "react-hot-toast"
+import { Analytics } from "@vercel/analytics/react"
 
 // Change back to Inter font
 const inter = Inter({ 
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+      <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
