@@ -1,12 +1,14 @@
 "use client"
 import Image from "next/image"
-import logo from '@/public/logo.png'
+import logo_dark from '@/public/logo.png'
 import * as React from "react"
+import logo_light from '@/public/logo_light.png'
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { WaitlistModal } from "./waitlist-modal"
 import { ThemeToggle } from "./theme-toggle"
+import { useTheme } from "./theme-provider"
 
 // Define navbar items with their section IDs
 const navItems = [
@@ -19,6 +21,12 @@ const navItems = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [showWaitlist, setShowWaitlist] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+  const { theme } = useTheme()
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Handle smooth scrolling to sections
   const scrollToSection = (sectionId: string) => (e: React.MouseEvent) => {
@@ -37,6 +45,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  if (!mounted) {
+    return null
+  }
+
   return (
     <>
       <motion.header
@@ -53,7 +65,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center relative">
             <div className="relative h-14 w-14 z-10">
               <Image
-                src={logo}
+                src={theme === 'light' ? logo_light : logo_dark}
                 alt="Docment Logo"
                 fill
                 className="object-contain"
