@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 import { useState, useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
@@ -132,7 +132,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="relative hidden lg:block"
           >
-            <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-muted/80 via-muted/50 to-muted/30 rounded-lg overflow-hidden border border-primary/10 shadow-xl">
+            <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-slate-200/80 via-slate-200/50 to-slate-200/30 dark:from-muted/80 dark:via-muted/50 dark:to-muted/30 rounded-lg overflow-hidden border border-primary/20 shadow-xl">
               {/* Replace this with your actual product screenshot */}
               <div className="absolute inset-0 bg-gradient-to-br from-background to-transparent opacity-70" />
               <div className="absolute inset-0 p-6 flex flex-col">
@@ -142,27 +142,27 @@ export function HeroSection() {
                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
-                  <div className="h-6 w-32 bg-muted/50 rounded-md" />
+                  <div className="h-6 w-32 bg-slate-300 dark:bg-muted/50 rounded-md" />
                 </div>
-                
+
                 <div className="flex-1 grid grid-cols-12 gap-4">
                   <div className="col-span-3 space-y-3">
-                    <div className="h-8 w-full bg-primary/10 rounded" />
-                    <div className="h-6 w-full bg-muted/60 rounded" />
-                    <div className="h-6 w-full bg-muted/60 rounded" />
-                    <div className="h-6 w-full bg-muted/60 rounded" />
-                    <div className="h-6 w-full bg-muted/60 rounded" />
+                    <div className="h-8 w-full bg-primary/20 rounded" />
+                    <div className="h-6 w-full bg-slate-300 dark:bg-muted/60 rounded" />
+                    <div className="h-6 w-full bg-slate-300 dark:bg-muted/60 rounded" />
+                    <div className="h-6 w-full bg-slate-300 dark:bg-muted/60 rounded" />
+                    <div className="h-6 w-full bg-slate-300 dark:bg-muted/60 rounded" />
                   </div>
-                  <div className="col-span-9 bg-background/70 rounded-lg border border-muted p-4">
-                    <div className="h-7 w-36 bg-primary/5 rounded mb-4" />
+                  <div className="col-span-9 bg-white/90 dark:bg-background/70 rounded-lg border border-slate-300 dark:border-muted p-4">
+                    <div className="h-7 w-36 bg-primary/10 rounded mb-4" />
                     <div className="space-y-2">
-                      <div className="h-4 w-full bg-muted/30 rounded" />
-                      <div className="h-4 w-full bg-muted/30 rounded" />
-                      <div className="h-4 w-3/4 bg-muted/30 rounded" />
+                      <div className="h-4 w-full bg-slate-200 dark:bg-muted/30 rounded" />
+                      <div className="h-4 w-full bg-slate-200 dark:bg-muted/30 rounded" />
+                      <div className="h-4 w-3/4 bg-slate-200 dark:bg-muted/30 rounded" />
                     </div>
-                    <div className="h-10 w-full bg-muted/20 mt-4 rounded" />
+                    <div className="h-10 w-full bg-slate-200 dark:bg-muted/20 mt-4 rounded" />
                     <div className="mt-6 flex justify-end">
-                      <div className="h-9 w-24 bg-primary/20 rounded" />
+                      <div className="h-9 w-24 bg-primary/30 rounded" />
                     </div>
                   </div>
                 </div>
@@ -170,28 +170,28 @@ export function HeroSection() {
             </div>
             
             {/* Floating elements */}
-            <motion.div 
-              className="absolute -right-12 -bottom-8 h-20 w-32 bg-background rounded-lg border border-muted/30 shadow-lg p-3"
+            <motion.div
+              className="absolute -right-12 -bottom-8 h-20 w-32 bg-white dark:bg-background rounded-lg border border-slate-300 dark:border-muted/30 shadow-lg p-3"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="h-3 w-16 bg-primary/20 rounded mb-2" />
-              <div className="h-2 w-full bg-muted/60 rounded mb-1.5" />
-              <div className="h-2 w-3/4 bg-muted/60 rounded" />
+              <div className="h-3 w-16 bg-primary/30 rounded mb-2" />
+              <div className="h-2 w-full bg-slate-300 dark:bg-muted/60 rounded mb-1.5" />
+              <div className="h-2 w-3/4 bg-slate-300 dark:bg-muted/60 rounded" />
             </motion.div>
-            
-            <motion.div 
-              className="absolute -left-10 -top-10 h-24 w-28 bg-background rounded-lg border border-muted/30 shadow-lg p-3"
+
+            <motion.div
+              className="absolute -left-10 -top-10 h-24 w-28 bg-white dark:bg-background rounded-lg border border-slate-300 dark:border-muted/30 shadow-lg p-3"
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
               <div className="flex justify-center mb-2">
-                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-lg">
+                <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-lg">
                   🔒
                 </div>
               </div>
-              <div className="h-2 w-full bg-muted/60 rounded mb-1.5" />
-              <div className="h-2 w-full bg-muted/60 rounded" />
+              <div className="h-2 w-full bg-slate-300 dark:bg-muted/60 rounded mb-1.5" />
+              <div className="h-2 w-full bg-slate-300 dark:bg-muted/60 rounded" />
             </motion.div>
           </motion.div>
         </div>
@@ -215,4 +215,6 @@ export function HeroSection() {
     </section>
   )
 }
+
+
 
