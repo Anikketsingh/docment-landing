@@ -44,6 +44,10 @@ export function ParticleEffect() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
+      // Use the same colors for both themes
+      const particleColor = "rgba(147, 197, 253, 0.3)" // Light blue
+      const particleColorFade = "rgba(147, 197, 253, 0)"
+
       particles.forEach((particle, i) => {
         particle.x += particle.dx
         particle.y += particle.dy
@@ -55,8 +59,8 @@ export function ParticleEffect() {
 
         // Create gradient for particles
         const gradient = ctx.createRadialGradient(particle.x, particle.y, 0, particle.x, particle.y, particle.size)
-        gradient.addColorStop(0, "rgba(147, 197, 253, 0.3)") // Blue
-        gradient.addColorStop(1, "rgba(147, 197, 253, 0)")
+        gradient.addColorStop(0, particleColor)
+        gradient.addColorStop(1, particleColorFade)
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
@@ -70,9 +74,11 @@ export function ParticleEffect() {
           const distance = Math.sqrt(dx * dx + dy * dy)
 
           if (distance < 150) {
-            // Increased connection distance
+            // Increased connection distance - same for both themes
+            const lineOpacity = `rgba(147, 197, 253, ${0.2 * (1 - distance / 150)})`
+
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(147, 197, 253, ${0.2 * (1 - distance / 150)})` // Increased opacity
+            ctx.strokeStyle = lineOpacity
             ctx.lineWidth = 1
             ctx.moveTo(particle.x, particle.y)
             ctx.lineTo(particle2.x, particle2.y)
@@ -97,8 +103,9 @@ export function ParticleEffect() {
       cancelAnimationFrame(animationFrameId)
       window.removeEventListener("resize", resize)
     }
-  }, [])
+  }, []) // No dependencies needed
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
 }
+
 
