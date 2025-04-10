@@ -23,10 +23,34 @@ export function Navbar() {
   const [showWaitlist, setShowWaitlist] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
   const { theme } = useTheme()
+  const [resolvedTheme, setResolvedTheme] = React.useState<'dark' | 'light'>('dark')
 
   React.useEffect(() => {
     setMounted(true)
-  }, [])
+    
+    // Determine the actual theme being applied
+    const updateResolvedTheme = () => {
+      if (theme === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        setResolvedTheme(systemTheme)
+      } else {
+        setResolvedTheme(theme as 'dark' | 'light')
+      }
+    }
+    
+    updateResolvedTheme()
+    
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const handleChange = () => {
+      if (theme === 'system') {
+        updateResolvedTheme()
+      }
+    }
+    
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [theme])
 
   // Handle smooth scrolling to sections
   const scrollToSection = (sectionId: string) => (e: React.MouseEvent) => {
@@ -65,7 +89,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center relative">
             <div className="relative h-14 w-14 z-10">
               <Image
-                src={theme === 'light' ? logo_light : logo_dark}
+                src={resolvedTheme === 'light' ? logo_light : logo_dark}
                 alt="Docment Logo"
                 fill
                 className="object-contain"
@@ -107,3 +131,4 @@ export function Navbar() {
     </>
   )
 }
+
