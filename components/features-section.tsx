@@ -44,13 +44,8 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/30 to-background pointer-events-none" />
-      <div className="absolute opacity-30 -top-[40%] -right-[20%] w-[70%] h-[70%] bg-gradient-to-br from-primary/20 to-purple-500/20 blur-3xl rounded-full pointer-events-none" />
-      <div className="absolute opacity-30 -bottom-[30%] -left-[20%] w-[60%] h-[60%] bg-gradient-to-tr from-blue-500/20 to-primary/20 blur-3xl rounded-full pointer-events-none" />
-      
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
+    <section id="features" className="relative bg-white/40 py-24 md:py-28">
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +56,7 @@ export function FeaturesSection() {
           <div className="inline-block mb-3 px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
             Powerful Capabilities
           </div>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          <h2 className="mb-4 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Features That Empower You
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

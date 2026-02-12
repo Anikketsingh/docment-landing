@@ -5,7 +5,7 @@ import logo from '@/public/logo.png'
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t bg-background/95 backdrop-blur-sm font-inter">
+    <footer id="contact" className="border-t border-gray-200/50 bg-white/60 backdrop-blur-sm font-inter">
       <div className="container px-4 md:px-6 py-12 mx-auto max-w-6xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
           {/* Brand Column */}

@@ -40,14 +40,8 @@ export function FaqSection() {
   }
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="absolute -left-32 top-1/3 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -right-32 bottom-1/3 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
+    <section id="faq" className="relative bg-background py-24 md:py-28">
+      <div className="container relative z-10 mx-auto max-w-5xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +52,7 @@ export function FaqSection() {
           <div className="inline-block mb-3 px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
             Got Questions?
           </div>
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          <h2 className="mb-6 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

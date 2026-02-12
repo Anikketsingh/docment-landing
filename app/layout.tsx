@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { CustomCursor } from "@/components/custom-cursor";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
 import Image from "next/image";
@@ -41,7 +40,6 @@ export default function RootLayout({
         <ThemeProvider
           defaultTheme="system"
         >
-          <CustomCursor />
           {children}
           <Toaster position="bottom-right" />
         </ThemeProvider>
